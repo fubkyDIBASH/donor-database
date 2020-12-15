@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BLOODBANK</title> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>  
+</head>
+<body>
+    <div class="container">
+            
+            <img src="{% static "images/bloodre.jpg" %}" class="img-fluid" alt="Responsive image">
+
+        <div class="jumbotron">
+            <h1> WELCOME</h1>
+           <a href="{% url 'first_app:form' %}" class="btn btn-outline-primary" role="button" aria-pressed="true"><h2> FILL FORM</h2></a>         
+        
+    <h3> Here are the last donated records:</h3>
+    
+    <div class="DJ">
+        {% if donate %}
+        <table class="table">
+            <thead class="thead-dark">
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">PhoneNo.</th>
+                <th scope="col">Email</th>
+                <th scope="col">Bloodgroup</th>
+                <th scope="col">LastDonatedDate</th>
+            </thead>
+            {% for i in donate %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.address}}</td>
+            <td>{{ i.phoneno}}</td>
+            <td>{{ i.email}}</td>
+            <td>{{ i.bloodgroup}}</td>
+            <td>{{ i.lastdonateddate }}</td>
+        </tr>
+        {% endfor %}
+        </div>
+        {% else %}
+            <p>No donated record found</p>
+            {% endif %}
+        </table>
+        
+    </div>
+</div>
+        
+
+</body>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a>BLOOD DONOR RECORD</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+</html>
